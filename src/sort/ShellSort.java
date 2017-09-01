@@ -12,11 +12,11 @@ public class ShellSort {
         //优化分割的步数
         int grap = 1;
         int N = a.length;
-        while(grap < a.length/3){grap = 3 * grap +1;}
+        while(grap < N / 3){grap = 3 * grap +1;}
 
         //一般分组一次插入排序
 //        for (grap = N/2;grap >0; grap=grap/2) {
-//            for (int i = 0; i <grap ; i++) {
+//            for (int i = 0; i <=grap ; i++) {
 //                for(int j = i+grap; j<N && less(a[j],a[j-grap]);j=j+grap) {
 //                    exch(a,j,j-grap);
 //                }
@@ -24,9 +24,10 @@ public class ShellSort {
 //
 //        }
         //无需一次，只要保证每组进行插入排序就行，例如1a,1b比较，接着进行2a,2b比较
+
         while (grap > 0) {
             for (int i = grap; i <N ; i++) {
-                for (int j = i;  j>=grap &&less(j,j-grap);j= j-grap ) {
+                for (int j = i + 1;  j>=grap && less(j,j-grap);j= j-grap ) {
                     exch(a,j,j-grap);
                 }
             }
@@ -71,7 +72,7 @@ public class ShellSort {
 
     //测试方法
     public static void main(String args[]) {
-        String[] a = {"g","b","a","q","c","d","e","f",};
+        String[] a = {"S", "H", "E", "L" ,"L" ,"S" ,"O", "R" ,"T" ,"E", "X" ,"A" ,"M" ,"P" ,"L" ,"E"};
         sort(a);
         assert isSorted(a);
         show(a);

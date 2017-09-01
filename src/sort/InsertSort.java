@@ -54,7 +54,7 @@ public class InsertSort {
 
     //测试方法
     public static void main(String args[]) {
-        String[] a = {"g","b","a","q","c","d","e","f",};
+        String[] a = {"S", "H", "E", "L" ,"L" ,"S" ,"O", "R" ,"T" ,"E", "X" ,"A" ,"M" ,"P" ,"L" ,"E"};
         sort(a);
         assert isSorted(a);
         show(a);
