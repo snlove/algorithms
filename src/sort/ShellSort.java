@@ -6,21 +6,17 @@ import edu.princeton.cs.algs4.StdOut;
 /**排序模版类
  * Created by pc on 2017/8/31.
  */
-public class Example {
+public class ShellSort {
 
     public  static  void  sort(Comparable[] a) {
-          //选择排序
-        int index= 0;
-        for (int i = 0; i <a.length ; i++) {
-            index = i;
-            for (int j = i+1; j <a.length ; j++) {
-                if (less(a[index],a[j])){
+        //插入排序
 
-                } else {
-                    index = j;
+        for (int grap = a.length/2; grap > 0 ; grap = grap/2) {
+            for (int i = 0; i <grap ; i++) {
+                for (int j = i+grap; j>i && less(a[j],a[j-grap]); j=j-grap) {
+                    exch(a,j,j-grap);
                 }
             }
-            exch(a,i,index);
         }
     }
 
@@ -51,9 +47,9 @@ public class Example {
     //检测数组是否进行了排序
     public static boolean isSorted(Comparable[] comparables) {
         for (int i = 1; i <comparables.length ; i++) {
-               if (less(comparables[i],comparables[i-1])) {
-                   return  false;
-               }
+            if (less(comparables[i],comparables[i-1])) {
+                return  false;
+            }
         }
         return  false;
     }
