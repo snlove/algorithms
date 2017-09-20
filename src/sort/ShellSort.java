@@ -13,26 +13,30 @@ public class ShellSort {
         int grap = 1;
         int N = a.length;
         while(grap < N / 3){grap = 3 * grap +1;}
+        //一般分组一次插入排序,实现错误
+        for (grap = N/2;grap >0; grap=grap/2) {
+            for (int i = 0; i <=grap ; i++) {
+                for (int k = i + grap; k < N ; k+=grap) {
+                    for(int j = k; j>=grap && less(a[j],a[j-grap]);j=j-grap) {
+                        exch(a,j,j-grap);
+                    }
+                }
 
-        //一般分组一次插入排序
-//        for (grap = N/2;grap >0; grap=grap/2) {
-//            for (int i = 0; i <=grap ; i++) {
-//                for(int j = i+grap; j<N && less(a[j],a[j-grap]);j=j+grap) {
+            }
+
+        }
+
+
+        //无需一次，只要保证每组进行插入排序就行，例如1a,1b比较，接着进行2a,2b比较
+
+//        while (grap > 0) {
+//            for (int i = grap; i <N ; i++) {
+//                for (int j = i ;  j>=grap && less(a[j],a[j-grap]);j = j-grap ) {
 //                    exch(a,j,j-grap);
 //                }
 //            }
-//
+//            grap = grap/3;
 //        }
-        //无需一次，只要保证每组进行插入排序就行，例如1a,1b比较，接着进行2a,2b比较
-
-        while (grap > 0) {
-            for (int i = grap; i <N ; i++) {
-                for (int j = i + 1;  j>=grap && less(j,j-grap);j= j-grap ) {
-                    exch(a,j,j-grap);
-                }
-            }
-            grap = grap/3;
-        }
 
     }
 

@@ -18,6 +18,16 @@ public class InsertSort {
         }
     }
 
+    public  static  void  sort(Comparable[] a,int lol,int end) {
+        //插入排序
+
+        for (int i = lol + 1; i < end; i++) {
+            for (int j = i ; j > lol && less(a[j], a[j-1]); j--) {
+                exch(a,j,j-1);
+            }
+        }
+    }
+
     /**
      *比较方法
      * ture a< b
